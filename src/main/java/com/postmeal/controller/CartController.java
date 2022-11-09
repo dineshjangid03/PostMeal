@@ -1,11 +1,11 @@
-package com.postmeal.dinesh.controller;
+package com.postmeal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.postmeal.Model.FoodCart;
 import com.postmeal.Model.Item;
-import com.postmeal.dinesh.service.CartService;
+import com.postmeal.service.CartService;
 
 @RestController
 public class CartController {
