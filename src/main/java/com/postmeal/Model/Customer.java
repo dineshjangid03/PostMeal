@@ -1,12 +1,16 @@
 package com.postmeal.Model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -41,8 +45,10 @@ public class Customer {
 	@Email(message =  "Email is not in 'example@email.com' format")
 	private String email;
 	
+	@ElementCollection
 	@Embedded
-	private Address address;
+	@JoinTable(name="customer_Adresses",joinColumns = @JoinColumn(name = "customerId"))
+	private Set<Address> addresses;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "foodCart", referencedColumnName = "cartId")

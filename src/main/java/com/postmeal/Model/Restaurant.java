@@ -38,7 +38,7 @@ public class Restaurant {
 	@Embedded
 	private Address address;
 	
-	@NotNull(message = "Manage Name can not null")
+	@NotNull(message = "Manager Name can not null")
 	private String managerName;
 	
 	@Pattern(regexp = "[0-9]{10}",message =  " contact Number should contain 10 Digits")
