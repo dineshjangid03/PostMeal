@@ -37,14 +37,27 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(BillException.class)
+	public ResponseEntity<MyErrorDetails> billExceptionHandler(BillException be, WebRequest req){
+		MyErrorDetails err = new MyErrorDetails();
+		
+		err.setLdt(LocalDateTime.now());
+		err.setMsg(be.getMessage());
+		err.setDesc(req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+	@ExceptionHandler(CustomerException.class)
+	public ResponseEntity<MyErrorDetails> customerExceptionHandler(CustomerException ce, WebRequest req){
+		MyErrorDetails err = new MyErrorDetails();
+		
+		err.setLdt(LocalDateTime.now());
+		err.setMsg(ce.getMessage());
+		err.setDesc(req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
 	
 	// Handling the validation Exception eg. email password size etc;
 	@ExceptionHandler(MethodArgumentNotValidException.class)

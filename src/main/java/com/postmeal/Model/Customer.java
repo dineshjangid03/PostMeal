@@ -13,7 +13,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 @Entity
 public class Customer {
 	
@@ -40,6 +44,9 @@ public class Customer {
 	@NotNull
 	@Email(message =  "Email is not in 'example@email.com' format")
 	private String email;
+	
+	
+	private String password;
 	
 	@Embedded
 	private Address address;
