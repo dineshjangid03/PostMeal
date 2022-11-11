@@ -7,6 +7,8 @@ import com.postmeal.Model.Customer;
 @Repository
 public interface CustomerDao extends JpaRepository<Customer, Integer>{
 	
-	public Customer findByMobileNo(String mobileNo);
+	//public Customer findByMobileNo(String mobileNo);
+	
+	public Customer findByEmail(String email);
 
 }
