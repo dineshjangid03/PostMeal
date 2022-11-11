@@ -26,6 +26,17 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(CategoryNotFoundException.class)
+	public ResponseEntity<MyErrorDetails> categoryNotFoundException(CategoryNotFoundException e, WebRequest req){
+		MyErrorDetails err = new MyErrorDetails();
+		
+		err.setLdt(LocalDateTime.now());
+		err.setMsg(e.getMessage());
+		err.setDesc(req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
 	
 	
 	
