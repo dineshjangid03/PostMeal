@@ -1,5 +1,10 @@
-package com.postmeal.dao;
+package com.postmeal.loginRepo;
 
-public interface UserSessionDao {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.postmeal.login.CurrentUserSession;
+
+public interface UserSessionDao extends JpaRepository<CurrentUserSession, Integer> {
+	
 
 }

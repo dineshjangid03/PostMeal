@@ -1,4 +1,4 @@
-package com.postmeal.dao;
+package com.postmeal.loginRepo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
