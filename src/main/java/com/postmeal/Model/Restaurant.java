@@ -32,7 +32,7 @@ public class Restaurant {
 	private Integer restaurantId;
 	
 	@NotNull
-	@Size(min = 3,max = 256, message = "Restaurant Name should caontain more than 3 and less than 256 words")
+	@Size(min = 3,max = 256, message = "Restaurant Name should contain more than 3 and less than 256 words")
 	private String restaurantName;
 	
 	@Embedded
@@ -43,6 +43,10 @@ public class Restaurant {
 	
 	@Pattern(regexp = "[0-9]{10}",message =  " contact Number should contain 10 Digits")
 	private String contactNumber;
+	@NotNull
+	@Pattern(regexp = "[0-9]{1}[A-Z]{1}[a-z]",message =  "atleast contain NO. or special symbol ")
+	@Size(min = 6,max = 10 ,message = "password ateleat should be six length")
+	private String password;
 	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)

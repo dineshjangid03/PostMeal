@@ -4,9 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;
 
-import com.postmeal.Model.FoodCart;
+import com.postmeal.Model.Restaurant;
+
 
 @Repository
-public interface CartRepository extends JpaRepository<FoodCart, Integer>{
+public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>{
 
 }
