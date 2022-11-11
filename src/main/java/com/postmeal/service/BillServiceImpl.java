@@ -9,7 +9,6 @@ public class BillServiceImpl implements BillService{
 
 	@Override
 	public Bill addBill(Bill bill) throws BillException {
-		// TODO Auto-generated method stub
 		Optional<Bill> opt = billRepo.findById(bill.getBillId());
 		if (opt.isPresent()) {
 			throw new BillException("Bill generated");
@@ -20,7 +19,6 @@ public class BillServiceImpl implements BillService{
 
 	@Override
 	public Bill updateBill(Bill bill) throws BillException {
-		// TODO Auto-generated method stub
 		Optional<Bill> opt = billRepo.findById(bill.getBillId());
 		if (opt.isPresent()) {
 			

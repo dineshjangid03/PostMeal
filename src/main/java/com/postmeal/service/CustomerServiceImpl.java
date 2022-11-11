@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService{
 	public List<Category> viewAllCategory() throws CategoryException {
 		List<Category> li = catService.findAll();
 		if (li.size() == 0) {
-			throw new CategoryException("Categorys are Empty");
+			throw new CategoryException("Categories are Empty");
 		}
 		return li;
 	}
