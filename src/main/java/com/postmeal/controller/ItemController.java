@@ -2,44 +2,69 @@ package com.postmeal.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.postmeal.Model.Category;
 import com.postmeal.Model.Item;
 import com.postmeal.Model.Restaurant;
+import com.postmeal.exception.ItemException;
+import com.postmeal.service.ItemService;
 
 @RestController
 @RequestMapping("/item")
 public class ItemController {
 	
-	public ResponseEntity<Item> addItem(Item item){
-		return null;
+	@Autowired
+	private ItemService is;
+	
+	@PostMapping("/additem")
+	public ResponseEntity<Item> addItem(@RequestBody Item item){
+		Item saved=is.addItem(item);
+		return new ResponseEntity<Item>(saved, HttpStatus.CREATED);
 	}
 	
-	public ResponseEntity<Item> updateItem(Item item){
-		return null;
+	@PutMapping("/updateitem")
+	public ResponseEntity<Item> updateItem(@RequestBody Item item) throws ItemException{
+		Item updated=is.updateItem(item);
+		return new ResponseEntity<Item>(updated, HttpStatus.ACCEPTED);
 	}
 	
-	public ResponseEntity<Item> viewItem(Integer itemId){
-		return null;
+	@GetMapping("/viewitem/{id}")
+	public ResponseEntity<Item> viewItem(@PathVariable("id") Integer itemId) throws ItemException{
+		Item item=is.viewItem(itemId);
+		return new ResponseEntity<Item>(item, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<Item> deleteItem(Integer itemId){
-		return null;
+	@DeleteMapping("/deleteitem/{id}")
+	public ResponseEntity<Item> deleteItem(@PathVariable("id") Integer itemId) throws ItemException{
+		Item deleted=is.deleteItem(itemId);
+		return new ResponseEntity<Item>(deleted, HttpStatus.OK);
 	}
 	
 	public ResponseEntity<List<Item>> viewAllItemByCategory(Category cat){
-		return null;
+		List<Item>list=is.viewAllItemByCategory(cat);
+		return new ResponseEntity<List<Item>>(list, HttpStatus.ACCEPTED);
 	}
 	
 	public ResponseEntity<List<Item>> viewAllItemByRestaurant(Restaurant res){
-		return null;
+		List<Item>list=is.viewAllItemByRestaurant(res);
+		return new ResponseEntity<List<Item>>(list, HttpStatus.ACCEPTED);
 	}
 	
-	public ResponseEntity<List<Item>> viewAllItemByName(String name){
-		return null;
+	@GetMapping("/viewallitembyname/{name}")
+	public ResponseEntity<List<Item>> viewAllItemByName(@PathVariable("name")String name) throws ItemException{
+		List<Item>list=is.viewAllItemByName(name);
+		return new ResponseEntity<List<Item>>(list, HttpStatus.ACCEPTED);
 	}
 
 }
