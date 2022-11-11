@@ -18,7 +18,7 @@ import lombok.ToString;
 
 public class Address {
 	
-	private Integer addressId;
+	
 	
 	private String buildingName;
 	
@@ -33,6 +33,8 @@ public class Address {
 	private String country;
 	
 	private String pincode;
+	
+	private String type;
 	
 	
 }
