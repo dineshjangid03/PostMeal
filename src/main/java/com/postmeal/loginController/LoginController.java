@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.postmeal.Model.Customer;
+import com.postmeal.exception.CurrentAdminSessException;
+import com.postmeal.exception.CurrentUserSessException;
 import com.postmeal.exception.SignupException;
 import com.postmeal.login.LoginDTO;
 import com.postmeal.login.service.LoginService;
@@ -23,14 +25,14 @@ public class LoginController {
 	private LoginService lService;
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> loginHandler(@Valid @RequestBody LoginDTO dto) throws LoginException
+	public ResponseEntity<String> loginHandler(@Valid @RequestBody LoginDTO dto) throws LoginException, CurrentUserSessException
 	{
 	String loginDone	=lService.loginUser(dto);
 	return new ResponseEntity<String>(loginDone,HttpStatus.ACCEPTED);
 	}
 	
 	@PostMapping("/signup")
-	public ResponseEntity<String> signupHandler(@Valid @RequestBody Customer custo) throws SignupException
+	public ResponseEntity<String> signupHandler(@Valid @RequestBody Customer custo) throws SignupException, CurrentAdminSessException
 	{
 		String signUpSucess= lService.signupUser(custo);
 		
