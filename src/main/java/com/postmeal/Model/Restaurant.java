@@ -32,7 +32,7 @@ public class Restaurant {
 	private Integer restaurantId;
 	
 	@NotNull
-	@Size(min = 3,max = 256, message = "Restaurant Name should caontain more than 3 and less than 256 words")
+	@Size(min = 3,max = 256, message = "Restaurant Name should contain more than 3 and less than 256 words")
 	private String restaurantName;
 	
 	@Embedded

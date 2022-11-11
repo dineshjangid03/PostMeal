@@ -11,14 +11,14 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+
 
 public class MyErrorDetails {
 	
-	private LocalDateTime timeStamp;
+	private LocalDateTime ldt;
 	
-	private String message;
+	private String msg;
 	
-	private String Details;
+	private String desc;
 	
 }
