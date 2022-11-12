@@ -10,13 +10,21 @@ import com.postmeal.Model.Category;
 import com.postmeal.Model.Item;
 import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.ItemException;
+import com.postmeal.repository.CategoryRepository;
 import com.postmeal.repository.ItemRepository;
+import com.postmeal.repository.RestaurantRepository;
 
 @Service
 public class ItemServiceImpl implements ItemService{
 	
 	@Autowired
 	private ItemRepository ir;
+	
+	@Autowired
+	private CategoryRepository cr;
+	
+	@Autowired
+	private RestaurantRepository rr;
 
 	@Override
 	public Item addItem(Item item) {
@@ -35,24 +43,31 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public Item viewItem(Integer itemId) throws ItemException {
 		Optional<Item> itm=ir.findById(itemId);
+		if(!itm.isPresent()) {
+			throw new ItemException("item not found with id "+itemId);
+		}
 		return itm.get();
 	}
 
 	@Override
 	public Item deleteItem(Integer itemId) throws ItemException {
-		Item it=ir.findById(itemId).get();
-		ir.delete(it);
-		return it;
+		Optional<Item> it=ir.findById(itemId);
+		if(!it.isPresent()) {
+			throw new ItemException("item not found with id "+itemId);
+		}
+		Item itm=it.get();
+		ir.delete(itm);
+		return itm;
 	}
 
 	@Override
-	public List<Item> viewAllItemByCategory(Category cat) {
+	public List<Item> viewAllItemByCategory(Integer catId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Item> viewAllItemByRestaurant(Restaurant res) {
+	public List<Item> viewAllItemByRestaurant(Integer resId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
