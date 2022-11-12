@@ -19,8 +19,6 @@ public class UserLogin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer userId;
-	
-	
 	@Email(message = "email is not in proper format")
 	private String userName;
 	@NotNull
