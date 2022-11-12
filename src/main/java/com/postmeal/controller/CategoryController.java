@@ -50,8 +50,8 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/vacat")
-	ResponseEntity<Category> viewAllCategoryHandler() throws CategoryNotFoundException{
+	ResponseEntity<List<Category>> viewAllCategoryHandler() throws CategoryNotFoundException{
 		List<Category> c5=cSer.viewAllCategory();
-		return new ResponseEntity<Category>(HttpStatus.OK);
+		return new ResponseEntity<List<Category>>(c5,HttpStatus.OK);
 	}
 }

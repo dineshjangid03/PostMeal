@@ -13,8 +13,8 @@ public class AdminCurrentSessServiceImpl implements AdminCurrentSessionService {
 	@Autowired
 	private AdminCurrentSessionRepo acsRepo;
 	
-	@Autowired
-	private AdminSignUpRepo signRepo;
+//	@Autowired
+//	private AdminSignUpRepo signRepo;
 	
 	
 	@Override

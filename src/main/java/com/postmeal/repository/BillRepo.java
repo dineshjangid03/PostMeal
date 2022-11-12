@@ -13,7 +13,7 @@ public interface BillRepo extends JpaRepository<Bill, Integer>{
 	
 @Query("SELECT b FROM Bill b WHERE b.billDate BETWEEN :sD AND :eD")
 	
-	public List<Bill> viewBills(@Param("sd") LocalDate startDate,@Param("eD") LocalDate endDate);
+	public List<Bill> viewBills(@Param("sD") LocalDate startDate,@Param("eD") LocalDate endDate);
 
 	public List<Bill> findAllBybillId(Integer custId);
 

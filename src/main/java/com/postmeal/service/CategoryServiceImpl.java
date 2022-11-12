@@ -19,11 +19,11 @@ public class CategoryServiceImpl implements CategoryService{
 	@Autowired
 	private CategoryRepository categoryRepo;
 	
-	@Autowired
-	private RestaurantRepository restaurantDao;
-	
-	@Autowired
-	private LoginService loginService;
+//	@Autowired
+//	private RestaurantRepository restaurantDao;
+//	
+//	@Autowired
+//	private LoginService loginService;
 
 	@Override
 	public Category addCategory(Category cat) throws CategoryNotFoundException {

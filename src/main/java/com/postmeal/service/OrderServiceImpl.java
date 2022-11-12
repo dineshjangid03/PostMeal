@@ -1,4 +1,4 @@
-package com.postmeal.service.OrderService;
+package com.postmeal.service;
 
 import java.util.ArrayList;
 import java.util.List;
