@@ -5,6 +5,7 @@ import java.util.List;
 import com.postmeal.Model.Item;
 import com.postmeal.exception.CategoryNotFoundException;
 import com.postmeal.exception.ItemException;
+import com.postmeal.exception.ResturantNotFoundException;
 
 public interface ItemService {
 	
@@ -18,7 +19,7 @@ public interface ItemService {
 	
 	public List<Item> viewAllItemByCategory(Integer catId) throws CategoryNotFoundException;
 	
-	public List<Item> viewAllItemByRestaurant(Integer resId);
+	public List<Item> viewAllItemByRestaurant(Integer resId) throws ResturantNotFoundException;
 	
 	public List<Item> viewAllItemByName(String name)throws ItemException;
 
