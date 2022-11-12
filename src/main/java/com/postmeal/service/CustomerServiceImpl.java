@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Customer viewCustomer(Customer customer) throws CustomerException {
+  public Customer viewCustomer(Customer customer) throws CustomerException {
 		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
 		if(opt.isPresent()) {
 			return opt.get();
