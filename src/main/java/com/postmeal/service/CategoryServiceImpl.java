@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.postmeal.Model.Category;
 import com.postmeal.exception.CategoryNotFoundException;
+import com.postmeal.login.service.LoginService;
 import com.postmeal.repository.CategoryRepository;
 
 @Service

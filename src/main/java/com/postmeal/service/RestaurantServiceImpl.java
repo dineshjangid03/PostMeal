@@ -52,8 +52,14 @@ public class RestaurantServiceImpl implements RestaurantService{
 
 	@Override
 	public Restaurant removeResturant(Restaurant res) throws ResturantNotFoundException {
-		List<Restaurant> list = (List<Restaurant>) repository.findAll();
-		return null;
+		Optional<Restaurant> rest =rDao.findById(res.getRestaurantId());
+		if(rest.isPresent())
+		{
+			throw new ResturantNotFoundException("Restorant is not Present...!");
+		}
+		rDao.delete(res);
+		return rest.get();
+		
 	}
 
 	@Override
