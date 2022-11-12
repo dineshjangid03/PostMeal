@@ -2,10 +2,7 @@ package com.postmeal.service;
 
 import java.util.List;
 
-
-import com.postmeal.Model.Category;
 import com.postmeal.Model.Item;
-import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.CategoryNotFoundException;
 import com.postmeal.exception.ItemException;
 

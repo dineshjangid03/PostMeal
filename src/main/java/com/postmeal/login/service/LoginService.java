@@ -1,17 +1,26 @@
 package com.postmeal.login.service;
 
-import javax.security.auth.login.LoginException;
+import javax.validation.Valid;
 
 import com.postmeal.Model.Customer;
 import com.postmeal.exception.CurrentAdminSessException;
 import com.postmeal.exception.CurrentUserSessException;
+import com.postmeal.exception.LogInException;
 import com.postmeal.exception.SignupException;
-import com.postmeal.login.LoginDTO;
+import com.postmeal.login.model.AdminLogin;
+import com.postmeal.login.model.UserLogin;
 
 public interface LoginService {
 	
-	public String loginUser(LoginDTO dto) throws LoginException,CurrentUserSessException;
-	public String signupUser(Customer custo) throws SignupException,CurrentAdminSessException;
+	public String loginUser(UserLogin dto) throws LogInException,CurrentUserSessException;
+	
+	public String userLogOut(String uuid) throws LogInException;
+	
+	public String adminLogin(AdminLogin adminData) throws LogInException, CurrentAdminSessException; 
+	
+	public String AdminLogOut(String adminId) throws LogInException;
+
+	public String signupUser(@Valid Customer custo);
 
 
 }
