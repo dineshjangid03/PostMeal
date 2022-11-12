@@ -2,13 +2,13 @@ package com.postmeal.login.service;
 
 import javax.validation.Valid;
 
+import com.postmeal.Model.Customer;
 import com.postmeal.exception.CurrentAdminSessException;
 import com.postmeal.exception.CurrentUserSessException;
 import com.postmeal.exception.LogInException;
 import com.postmeal.exception.SignupException;
 import com.postmeal.login.model.AdminLogin;
 import com.postmeal.login.model.UserLogin;
-import com.postmeal.model.Customer;
 
 public interface LoginService {
 	

@@ -1,8 +1,8 @@
 package com.postmeal.login.service;
 
+import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.LogInException;
 import com.postmeal.login.model.AdminCurrentSession;
-import com.postmeal.model.Restaurant;
 
 public interface AdminCurrentSessionService {
 	

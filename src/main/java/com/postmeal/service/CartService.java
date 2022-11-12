@@ -1,9 +1,9 @@
 package com.postmeal.service;
 
+import com.postmeal.Model.FoodCart;
+import com.postmeal.Model.Item;
 import com.postmeal.exception.FoodCartException;
 import com.postmeal.exception.ItemException;
-import com.postmeal.model.FoodCart;
-import com.postmeal.model.Item;
 
 public interface CartService {
 	

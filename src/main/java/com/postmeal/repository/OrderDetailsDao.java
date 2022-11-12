@@ -3,9 +3,9 @@ package com.postmeal.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.postmeal.Model.Category;
-
+import com.postmeal.Model.OrderDetails;
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Integer>{
+public interface OrderDetailsDao extends JpaRepository<OrderDetails, Integer> {
+	
 
 }

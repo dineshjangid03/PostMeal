@@ -8,9 +8,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.postmeal.Model.Bill;
 import com.postmeal.exception.BillException;
 import com.postmeal.exception.CustomerException;
-import com.postmeal.model.Bill;
 import com.postmeal.repository.BillRepo;
 
 @Service

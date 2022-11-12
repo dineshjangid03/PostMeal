@@ -1,4 +1,6 @@
-package com.postmeal.model;
+package com.postmeal.Model;
+
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -54,4 +57,7 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "foodCart", referencedColumnName = "cartId")
 	private FoodCart foodCart; 
+	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name="orderDetail", referencedColumnName = "orderId")
+	private List<OrderDetails> orders;
 }

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.postmeal.Model.Customer;
 import com.postmeal.exception.CustomerException;
-import com.postmeal.model.Customer;
 import com.postmeal.service.CustomerService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;

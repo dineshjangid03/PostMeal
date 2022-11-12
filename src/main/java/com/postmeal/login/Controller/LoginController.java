@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.postmeal.Model.Customer;
+import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.CurrentAdminSessException;
 import com.postmeal.exception.CurrentUserSessException;
 import com.postmeal.exception.CustomerException;
@@ -21,8 +23,6 @@ import com.postmeal.login.model.AdminLogin;
 import com.postmeal.login.model.UserLogin;
 import com.postmeal.login.service.LoginService;
 import com.postmeal.login.service.SignUpService;
-import com.postmeal.model.Customer;
-import com.postmeal.model.Restaurant;
 
 @RestController
 @RequestMapping("/authr")

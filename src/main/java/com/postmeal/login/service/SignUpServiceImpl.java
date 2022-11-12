@@ -7,6 +7,8 @@ import javax.security.auth.login.LoginException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.postmeal.Model.Customer;
+import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.CurrentUserSessException;
 import com.postmeal.exception.CustomerException;
 import com.postmeal.exception.LogInException;
@@ -15,8 +17,6 @@ import com.postmeal.login.Repository.UserCurrentSessionRepo;
 import com.postmeal.login.Repository.UserSignUpRepo;
 import com.postmeal.login.model.AdminCurrentSession;
 import com.postmeal.login.model.UserCurrentSession;
-import com.postmeal.model.Customer;
-import com.postmeal.model.Restaurant;
 import com.postmeal.repository.CustomerRepo;
 import com.postmeal.repository.RestaurantRepository;
 @Service

@@ -1,11 +1,11 @@
 package com.postmeal.login.service;
 
 
+import com.postmeal.Model.Customer;
+import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.CurrentUserSessException;
 import com.postmeal.exception.CustomerException;
 import com.postmeal.exception.LogInException;
-import com.postmeal.model.Customer;
-import com.postmeal.model.Restaurant;
 
 public interface SignUpService {
 	

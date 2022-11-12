@@ -1,4 +1,4 @@
-package com.postmeal.model;
+package com.postmeal.Model;
 
 import java.time.LocalDateTime;
 

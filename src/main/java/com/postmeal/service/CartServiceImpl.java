@@ -7,10 +7,10 @@ import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.postmeal.Model.FoodCart;
+import com.postmeal.Model.Item;
 import com.postmeal.exception.FoodCartException;
 import com.postmeal.exception.ItemException;
-import com.postmeal.model.FoodCart;
-import com.postmeal.model.Item;
 import com.postmeal.repository.CartRepository;
 import com.postmeal.repository.ItemRepository;
 

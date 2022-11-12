@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.postmeal.Model.Customer;
+import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.CurrentAdminSessException;
 import com.postmeal.exception.LogInException;
 import com.postmeal.exception.SignupException;
@@ -20,8 +22,6 @@ import com.postmeal.login.model.AdminCurrentSession;
 import com.postmeal.login.model.AdminLogin;
 import com.postmeal.login.model.UserCurrentSession;
 import com.postmeal.login.model.UserLogin;
-import com.postmeal.model.Customer;
-import com.postmeal.model.Restaurant;
 import com.postmeal.repository.CustomerRepo;
 import com.postmeal.repository.RestaurantRepository;
 

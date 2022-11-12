@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.postmeal.Model.Bill;
 import com.postmeal.exception.BillException;
 import com.postmeal.exception.CustomerException;
-import com.postmeal.model.Bill;
 import com.postmeal.service.BillService;
 
 @RestController
