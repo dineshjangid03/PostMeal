@@ -16,6 +16,7 @@ import com.postmeal.exception.LogInException;
 import com.postmeal.exception.SignupException;
 import com.postmeal.login.Repository.AdminCurrentSessionRepo;
 import com.postmeal.login.Repository.AdminLoginRepo;
+import com.postmeal.login.Repository.AdminSignUpRepo;
 import com.postmeal.login.Repository.UserCurrentSessionRepo;
 import com.postmeal.login.Repository.UserLoginRepo;
 import com.postmeal.login.model.AdminCurrentSession;
@@ -49,7 +50,7 @@ public class LoginServiceImpl implements LoginService {
 			throw new LogInException("Invalid Email...");
 		}
 		
-		UserCurrentSession currUserOpt = userRepo.findByRestaurantId(customer.getCustomerId());
+		UserCurrentSession currUserOpt = userRepo.findByCustomerId(customer.getCustomerId());
 		if(currUserOpt != null) {
 			throw new LogInException("User Already Logged In...");
 		}
@@ -108,14 +109,9 @@ public class LoginServiceImpl implements LoginService {
 			throw new LogInException("Please LogIn First...");
 		}
 		acsRepo.delete(acs);
-		AdminLogin al = alRepo.findByRestaurantId(acs.getRestaurantId());
-		alRepo.delete(al);
-		return acs.toString()+"  "+"Logged Out...";
-	}
-	@Override
-	public String signupUser(@Valid Customer custo) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<AdminLogin> al = alRepo.findById(acs.getRestaurantId());
+		alRepo.delete(al.get());
+		return "Logged Out...";
 	}
 
 

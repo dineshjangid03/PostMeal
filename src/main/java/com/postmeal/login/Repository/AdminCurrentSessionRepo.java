@@ -7,6 +7,7 @@ import com.postmeal.login.model.AdminCurrentSession;
 
 @Repository
 public interface AdminCurrentSessionRepo extends JpaRepository<AdminCurrentSession, Integer> {
+	
 	public AdminCurrentSession findByRestaurantId(Integer adminId);
 	
 	public AdminCurrentSession findByUuid(String uuid);

@@ -7,6 +7,5 @@ import com.postmeal.login.model.AdminLogin;
 @Repository
 public interface AdminLoginRepo extends JpaRepository<AdminLogin, Integer> {
 	
-	public AdminLogin findByRestaurantId(Integer name);
 
 }

@@ -12,5 +12,5 @@ public class PostMealApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PostMealApplication.class, args);
 	}
-
+	
 }
