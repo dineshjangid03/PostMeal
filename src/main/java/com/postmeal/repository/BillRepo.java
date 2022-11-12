@@ -11,7 +11,7 @@ import com.postmeal.Model.Bill;
 
 public interface BillRepo extends JpaRepository<Bill, Integer>{
 	
-@Query("SELECT b FROM Bill b WHERE b.billDate BETWEEN :sD AND :eD")
+	@Query("SELECT b FROM Bill b WHERE b.billDate BETWEEN :sD AND :eD")
 	
 	public List<Bill> viewBills(@Param("sD") LocalDate startDate,@Param("eD") LocalDate endDate);
 
