@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.postmeal.Model.Customer;
 import com.postmeal.Model.OrderDetails;
 import com.postmeal.exception.OrderException;
-import com.postmeal.service.OrderService.OrderService;
+import com.postmeal.service.OrderService;
 
 @RestController
 @RequestMapping("/OrderDetails")

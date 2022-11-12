@@ -1,10 +1,9 @@
-package com.postmeal.service.OrderService;
+package com.postmeal.service;
 
 import java.util.List;
 
 import com.postmeal.Model.Customer;
 import com.postmeal.Model.OrderDetails;
-import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.OrderException;
 
 public interface OrderService {
@@ -14,7 +13,4 @@ public interface OrderService {
 	 public OrderDetails viewOrder(OrderDetails orders)throws OrderException;
 	 public List<OrderDetails> viewAllOrder()throws OrderException;
 	 public List<OrderDetails> viewAllOrder(Customer cust)throws OrderException;
-	 
-	 
-
 }

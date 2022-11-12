@@ -33,18 +33,18 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Customer removeCustomer(Customer customer) throws CustomerException {
-		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+	public Customer removeCustomer(Integer id) throws CustomerException {
+		Optional<Customer> opt = cRepo.findById(id);
 		if(opt.isPresent()) {
-			cRepo.delete(customer);
+			cRepo.delete(opt.get());
 			return opt.get();
 		}
 		throw new CustomerException("No Customer Exist");
 	}
 
 	@Override
-	public Customer viewCustomer(Customer customer) throws CustomerException {
-		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+  public Customer viewCustomer(Integer cID) throws CustomerException {
+		Optional<Customer> opt = cRepo.findById(cID);
 		if(opt.isPresent()) {
 			return opt.get();
 		}

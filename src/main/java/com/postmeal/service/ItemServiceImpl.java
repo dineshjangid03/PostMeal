@@ -6,8 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.postmeal.exception.CategoryNotFoundException;
 import com.postmeal.exception.ItemException;
+import com.postmeal.exception.ResturantNotFoundException;
+import com.postmeal.Model.Category;
 import com.postmeal.Model.Item;
+import com.postmeal.Model.Restaurant;
 import com.postmeal.repository.CategoryRepository;
 
 import com.postmeal.repository.ItemRepository;
@@ -60,15 +64,21 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public List<Item> viewAllItemByCategory(Integer catId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Item> viewAllItemByCategory(Integer catId) throws CategoryNotFoundException{
+		Optional<Category> ct= cr.findById(catId);
+		if(!ct.isPresent()) {
+			throw new CategoryNotFoundException("category not found");
+		}
+		return ct.get().getItems();
 	}
 
 	@Override
-	public List<Item> viewAllItemByRestaurant(Integer resId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Item> viewAllItemByRestaurant(Integer resId) throws ResturantNotFoundException{
+		Optional<Restaurant> rs= rr.findById(resId);
+		if(!rs.isPresent()) {
+			throw new ResturantNotFoundException("restaurant not found");
+		}
+		return rs.get().getItems();
 	}
 
 	@Override
