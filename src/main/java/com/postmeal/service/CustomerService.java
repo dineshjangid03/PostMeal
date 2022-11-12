@@ -9,7 +9,7 @@ public interface CustomerService {
 	
 	public Customer updateCustomer(Customer customer) throws CustomerException;
 	
-	public Customer removeCustomer(Customer customer) throws CustomerException;
+	public Customer removeCustomer(Integer id) throws CustomerException;
 	
-	public Customer viewCustomer(Customer customer) throws CustomerException;
+	public Customer viewCustomer(Integer cID) throws CustomerException;
 }
