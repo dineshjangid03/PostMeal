@@ -1,4 +1,4 @@
-package com.postmeal.Model;
+package com.postmeal.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

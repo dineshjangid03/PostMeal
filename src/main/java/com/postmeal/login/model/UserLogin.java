@@ -1,5 +1,9 @@
-package com.postmeal.login;
+package com.postmeal.login.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -10,10 +14,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class LoginDTO {
+@Entity
+public class UserLogin {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer userId;
 	
-	private String userId;
+	
 	@Email(message = "email is not in proper format")
 	private String userName;
 	@NotNull

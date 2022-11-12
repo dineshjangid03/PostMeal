@@ -2,11 +2,10 @@ package com.postmeal.service;
 
 import java.util.List;
 
-
-import com.postmeal.Model.Category;
-import com.postmeal.Model.Item;
-import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.ItemException;
+import com.postmeal.model.Category;
+import com.postmeal.model.Item;
+import com.postmeal.model.Restaurant;
 
 public interface ItemService {
 	

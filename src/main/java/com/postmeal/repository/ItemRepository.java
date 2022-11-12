@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.postmeal.Model.Item;
+import com.postmeal.model.Item;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Integer>{

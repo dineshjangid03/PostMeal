@@ -1,4 +1,4 @@
-package com.postmeal.Model;
+package com.postmeal.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;

@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.postmeal.Model.FoodCart;
 import com.postmeal.exception.FoodCartException;
 import com.postmeal.exception.ItemException;
+import com.postmeal.model.FoodCart;
 import com.postmeal.service.CartService;
 
 @RestController

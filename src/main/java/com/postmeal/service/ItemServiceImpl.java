@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.postmeal.Model.Category;
-import com.postmeal.Model.Item;
-import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.ItemException;
+import com.postmeal.model.Category;
+import com.postmeal.model.Item;
+import com.postmeal.model.Restaurant;
 import com.postmeal.repository.ItemRepository;
 
 @Service

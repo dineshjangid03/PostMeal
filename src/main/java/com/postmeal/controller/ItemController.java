@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.postmeal.Model.Category;
-import com.postmeal.Model.Item;
-import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.ItemException;
+import com.postmeal.model.Category;
+import com.postmeal.model.Item;
+import com.postmeal.model.Restaurant;
 import com.postmeal.service.ItemService;
 
 @RestController
