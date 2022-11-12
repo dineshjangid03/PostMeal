@@ -1,10 +1,12 @@
-package com.postMeal.repository;
+package com.postmeal.repository;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import com.postmeal.Model.Bill;
 
 public interface BillRepo extends JpaRepository<Bill, Integer>{
 	
