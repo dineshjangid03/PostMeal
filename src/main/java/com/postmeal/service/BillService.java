@@ -1,6 +1,11 @@
-package com.postMeal.service;
+package com.postmeal.service;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import com.postmeal.Model.Bill;
+import com.postmeal.exception.BillException;
+import com.postmeal.exception.CustomerException;
 
 public interface BillService {
 	

@@ -1,65 +1,56 @@
-package com.postMeal.service;
-
-import java.util.List;
+package com.postmeal.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.postMeal.Model.Category;
+import com.postmeal.Model.Customer;
+import com.postmeal.exception.CustomerException;
+import com.postmeal.repository.CustomerRepo;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
-
-		
 	@Autowired
-	private com.foodapp.Repository.CategoryRepo catService;
+	private CustomerRepo cRepo;
+
+	@Override
+	public Customer addCustomer(Customer customer) throws CustomerException {
+		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+		if(opt.isPresent()) {
+			throw new CustomerException("Customer Already Exist ....");
+		}
+		
+		return cRepo.save(customer);
+	}
+
+	@Override
+	public Customer updateCustomer(Customer customer) throws CustomerException {
+		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+		if(opt.isPresent()) {
+			return cRepo.save(customer);
+		}
+		throw new CustomerException("No Customer Exist with this Data");
+	}
+
+	@Override
+	public Customer removeCustomer(Customer customer) throws CustomerException {
+		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+		if(opt.isPresent()) {
+			cRepo.delete(customer);
+			return opt.get();
+		}
+		throw new CustomerException("No Customer Exist");
+	}
+
+	@Override
+  public Customer viewCustomer(Customer customer) throws CustomerException {
+		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+		if(opt.isPresent()) {
+			return opt.get();
+		}
+		throw new CustomerException("No Customer Exist");
+	}
 	
-
-	@Override
-	public Category addCategory(Category cat) throws CategoryException {
-		Optional<Category> opt = catService.findById(cat.getCatId());
-		if (opt.isPresent()) {
-			throw new CategoryException("Category already Exist");
-		}
-		return catService.save(cat);
-
-	}
-
-	@Override
-	public Category updateCategory(Category cat) throws CategoryException {
-		Optional<Category> opt = catService.findById(cat.getCatId());
-		if (!opt.isPresent()) {
-			throw new CategoryException("Category Not Exist");
-		}
-		return catService.save(cat);
-	}
-
-	@Override
-	public Category removeCatrgory(Category cat) throws CategoryException {
-		Optional<Category> opt = catService.findById(cat.getCatId());
-		if (!opt.isPresent()) {
-			throw new CategoryException("Category Not Exist");
-		}
-		catService.delete(cat);
-		return opt.get();
-	}
-
-	@Override
-	public Category viewCatrgory(Category cat) throws CategoryException {
-		Optional<Category> opt = catService.findById(cat.getCatId());
-		if (!opt.isPresent()) {
-			throw new CategoryException("Category Not Exist");
-		}
-		return opt.get();
-	}
-
-	@Override
-	public List<Category> viewAllCategory() throws CategoryException {
-		List<Category> li = catService.findAll();
-		if (li.size() == 0) {
-			throw new CategoryException("Categories are Empty");
-		}
-		return li;
-	}
+	
+	
 }

@@ -1,6 +1,7 @@
-package com.postMeal.service;
+package com.postmeal.service;
 
-import com.postMeal.Model.Customer;
+import com.postmeal.Model.Customer;
+import com.postmeal.exception.CustomerException;
 
 public interface CustomerService {
 	

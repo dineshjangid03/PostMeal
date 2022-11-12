@@ -1,16 +1,15 @@
 package com.postmeal.Model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -22,7 +21,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
 @Entity
 public class Customer {
 	
@@ -49,16 +47,17 @@ public class Customer {
 	@NotNull
 	@Email(message =  "Email is not in 'example@email.com' format")
 	private String email;
-	@NotNull
-	@Size(min = 6,max = 10,message = "password atlest contain six character and one special symbol")
+	
+	
 	private String password;
 	
 	@Embedded
-//	private Address address;
-	@ElementCollection
-	private Set<Address> address = new HashSet<>();
+	private Address address;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "foodCart", referencedColumnName = "cartId")
 	private FoodCart foodCart; 
+	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name="orderDetail", referencedColumnName = "orderId")
+	private List<OrderDetails> orders;
 }

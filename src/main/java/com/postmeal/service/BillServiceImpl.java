@@ -1,12 +1,23 @@
-package com.postMeal.service;
+package com.postmeal.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class BillServiceImpl implements BillService{
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.postmeal.Model.Bill;
+import com.postmeal.exception.BillException;
+import com.postmeal.exception.CustomerException;
+import com.postmeal.repository.BillRepo;
+
+@Service
+public class BillServiceImpl implements BillService{
+	@Autowired
+	private BillRepo billRepo;
+		
 	@Override
 	public Bill addBill(Bill bill) throws BillException {
 		Optional<Bill> opt = billRepo.findById(bill.getBillId());
