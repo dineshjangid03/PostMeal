@@ -51,6 +51,7 @@ public class RestaurantServiceImpl implements RestaurantService{
 
 	@Override
 	public Restaurant removeResturant(Restaurant res) throws ResturantNotFoundException {
+
 		Optional<Restaurant> opt=rDao.findById(res.getRestaurantId());
 		if(opt.isPresent()) {
 			rDao.delete(opt.get());
@@ -58,6 +59,7 @@ public class RestaurantServiceImpl implements RestaurantService{
 		}else {
 			throw new ResturantNotFoundException("Resturant not removed"+res.getRestaurantId());
 		}
+
 	}
 
 	@Override

@@ -27,24 +27,24 @@ public class CustomerController {
 	private CustomerService cImpl;
 	
 	@PostMapping("/add")
-	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) throws CustomerException {
+	public ResponseEntity<Customer> addCustomerHandler(@Valid @RequestBody Customer customer) throws CustomerException {
 		Customer cust = cImpl.addCustomer(customer);
 		return new ResponseEntity<Customer>(cust,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) throws CustomerException {
+	public ResponseEntity<Customer> updateCustomerHandler(@Valid @RequestBody Customer customer) throws CustomerException {
 		Customer cust = cImpl.updateCustomer(customer);
 		return new ResponseEntity<Customer>(cust,HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/remove")
-	public ResponseEntity<Customer> deleteCustomer(@RequestBody Customer customer) throws CustomerException {
+	public ResponseEntity<Customer> deleteCustomerHandler(@Valid @RequestBody Customer customer) throws CustomerException {
 		Customer cust = cImpl.removeCustomer(customer);
 		return new ResponseEntity<Customer>(cust,HttpStatus.CREATED);
 	}
 	@GetMapping("/view")
-	public ResponseEntity<Customer> viewCustomer(@RequestBody Customer customer) throws CustomerException {
+	public ResponseEntity<Customer> viewCustomerHandler(@Valid @RequestBody Customer customer) throws CustomerException {
 		Customer cust = cImpl.viewCustomer(customer);
 		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
 	}

@@ -17,28 +17,38 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer addCustomer(Customer customer) throws CustomerException {
 		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
 		if(opt.isPresent()) {
-			
+			throw new CustomerException("Customer Already Exist ....");
 		}
 		
-		return null;
+		return cRepo.save(customer);
 	}
 
 	@Override
 	public Customer updateCustomer(Customer customer) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+		if(opt.isPresent()) {
+			return cRepo.save(customer);
+		}
+		throw new CustomerException("No Customer Exist with this Data");
 	}
 
 	@Override
 	public Customer removeCustomer(Customer customer) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+		if(opt.isPresent()) {
+			cRepo.delete(customer);
+			return opt.get();
+		}
+		throw new CustomerException("No Customer Exist");
 	}
 
 	@Override
 	public Customer viewCustomer(Customer customer) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Customer> opt = cRepo.findById(customer.getCustomerId());
+		if(opt.isPresent()) {
+			return opt.get();
+		}
+		throw new CustomerException("No Customer Exist");
 	}
 	
 	

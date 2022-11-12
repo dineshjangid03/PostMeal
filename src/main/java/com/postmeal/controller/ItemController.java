@@ -51,13 +51,15 @@ public class ItemController {
 		return new ResponseEntity<Item>(deleted, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<List<Item>> viewAllItemByCategory(Category cat){
-		List<Item>list=is.viewAllItemByCategory(cat);
+	@GetMapping("/viewitembycategory/{catId}")
+	public ResponseEntity<List<Item>> viewAllItemByCategory(@PathVariable("catId") Integer catId){
+		List<Item>list=is.viewAllItemByCategory(catId);
 		return new ResponseEntity<List<Item>>(list, HttpStatus.ACCEPTED);
 	}
 	
-	public ResponseEntity<List<Item>> viewAllItemByRestaurant(Restaurant res){
-		List<Item>list=is.viewAllItemByRestaurant(res);
+	@GetMapping("/viewitembyrestaurant/{resId}")
+	public ResponseEntity<List<Item>> viewAllItemByRestaurant(@PathVariable("resId") Integer resId){
+		List<Item>list=is.viewAllItemByRestaurant(resId);
 		return new ResponseEntity<List<Item>>(list, HttpStatus.ACCEPTED);
 	}
 	
