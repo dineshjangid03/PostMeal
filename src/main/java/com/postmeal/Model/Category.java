@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +29,7 @@ public class Category {
 	@NotNull(message="Category Name can nut be null")
 	private String CategoryName;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Item> items;
 	

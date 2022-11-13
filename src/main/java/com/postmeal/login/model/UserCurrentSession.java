@@ -19,6 +19,7 @@ import lombok.ToString;
 @Entity
 public class UserCurrentSession {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(unique = true)
 	private Integer userId;
 	
