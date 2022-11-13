@@ -6,10 +6,13 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.postmeal.Model.Customer;
@@ -60,21 +63,27 @@ public class LoginController {
 		
 		return new ResponseEntity<Restaurant>(rests, HttpStatus.ACCEPTED);
 	}
-	@PostMapping("/userSignUp")
-	public ResponseEntity<Customer> userSignUpHandler(@Valid @RequestBody Customer cust) throws CustomerException{
-		Customer customer = signServ.UserSignUp(cust);
+	@GetMapping("/userLogout/{key}")
+	public ResponseEntity<String> userLogOutHandler(@PathVariable("key") String key) throws LogInException{
+		String message = lService.userLogOut(key);
 		
-		return new ResponseEntity<Customer>(customer,HttpStatus.ACCEPTED);
+		return new ResponseEntity<String>(message,HttpStatus.ACCEPTED);
+	}
+	@GetMapping("/adminLogout/{key}")
+	public ResponseEntity<String> adminLogOutHandler(@PathVariable("key") String key) throws LogInException{
+		String message = lService.AdminLogOut(key);
+		
+		return new ResponseEntity<String>(message,HttpStatus.ACCEPTED);
 	}
 	
-	@PostMapping("/adminUpdate/{key}")
+	@PutMapping("/adminUpdate/{key}")
 	public ResponseEntity<Restaurant> adminUpdateHandler(@Valid @RequestBody Restaurant rest,@PathVariable("key") String key ) throws LogInException{
 		
 		Restaurant rests = signServ.updateAdminSignUpDetails(rest,key);
 		
 		return new ResponseEntity<Restaurant>(rests, HttpStatus.ACCEPTED);
 	}
-	@PostMapping("/userUpdate")
+	@PutMapping("/userUpdate")
 	public ResponseEntity<Customer> userUpdateHandler(@Valid @RequestBody Customer cust,@PathVariable("key") String key) throws CustomerException, LogInException, CurrentUserSessException{
 		Customer customer = signServ.updateSignUpDetails(cust, key);
 		

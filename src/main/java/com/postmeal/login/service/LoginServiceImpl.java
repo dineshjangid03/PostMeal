@@ -43,6 +43,7 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private AdminLoginRepo alRepo;
 
+
 	@Override
 	public String loginUser(UserLogin dto) throws LogInException {
 		Customer customer = cRepo.findByEmail(dto.getUserName());
@@ -56,6 +57,7 @@ public class LoginServiceImpl implements LoginService {
 		}
 		if (customer != null && customer.getPassword().equals(dto.getPassword())&& customer.getEmail().equals(dto.getUserName())) {
 			UserCurrentSession ucs = new UserCurrentSession();
+			ucs.setUserId(customer.getCustomerId());
 			ucs.setLocalDateTime(LocalDateTime.now());
 			ucs.setCustomerId(customer.getCustomerId());
 			ucs.setUuid(RandomString.make(6));
@@ -73,10 +75,11 @@ public class LoginServiceImpl implements LoginService {
 		if(ucs==null) {
 			throw new LogInException("Please Login first....");
 		}
-		userRepo.delete(ucs);
-		Optional<UserLogin> ul = ulRepo.findById(ucs.getCustomerId());
-		ulRepo.delete(ul.get());
 		
+		Optional<UserLogin> ul = ulRepo.findById(ucs.getCustomerId());
+		
+		ulRepo.delete(ul.get());
+		userRepo.delete(ucs);
 		return "Logged Out...";
 	}
 	
@@ -90,12 +93,18 @@ public class LoginServiceImpl implements LoginService {
 		if(acs!=null) {
 			throw new CurrentAdminSessException("Admin Already Logged In ...");
 		}
-		if(rest.getManagerName().equals(adminData.getRestaurantname()) && rest.getPassword().equals(adminData.getPassword())) {
+		if(rest.getRestaurantName().equals(adminData.getRestaurantname()) && rest.getPassword().equals(adminData.getPassword())) {
 			AdminCurrentSession acsess = new AdminCurrentSession();
+			acsess.setId(rest.getRestaurantId());
 			acsess.setLocalDateTime(LocalDateTime.now());
 			acsess.setRestaurantId(rest.getRestaurantId());
 			acsess.setUuid(RandomString.make(6));
-			
+			acsRepo.save(acsess);
+			AdminLogin alog = new AdminLogin();
+			alog.setAdminId(rest.getRestaurantId());
+			alog.setPassword(rest.getPassword());
+			alog.setRestaurantname(rest.getRestaurantName());
+			alRepo.save(alog);
 			return acsess.toString()+"  ... Loged In SuccessFully";
 		}else {
 			throw new LogInException("Invalid Credentials..");

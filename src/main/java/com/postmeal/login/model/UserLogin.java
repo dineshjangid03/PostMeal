@@ -1,8 +1,7 @@
 package com.postmeal.login.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -17,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class UserLogin {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique = true)
 	private Integer userId;
 	@Email(message = "email is not in proper format")
 	private String userName;
