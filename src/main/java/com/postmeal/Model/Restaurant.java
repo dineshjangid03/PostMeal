@@ -44,8 +44,7 @@ public class Restaurant {
 	@Pattern(regexp = "[0-9]{10}",message =  " contact Number should contain 10 Digits")
 	private String contactNumber;
 	@NotNull
-//	@Pattern(regexp = "[0-9]{1}[A-Z]{1}[a-z]",message =  "atleast contain NO. or special symbol ")
-	@Size(min = 6,max = 10 ,message = "password ateleat should be six length")
+	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})",message =  "atleast contain 1 Numeric,1 special charecter or one lowercase 1uper leter and size must be 6 to 12")
 	private String password;
 	
 	@JsonIgnore
