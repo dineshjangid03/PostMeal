@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -54,10 +56,13 @@ public class Customer {
 	@Embedded
 	private Address address;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "foodCart", referencedColumnName = "cartId")
-	private FoodCart foodCart; 
-	@OneToMany(cascade = CascadeType.ALL)
+//	@JsonIgnore
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "foodCart", referencedColumnName = "cartId")
+//	private FoodCart foodCart;
+	
+//	@JsonIgnore
+//	@OneToMany(cascade = CascadeType.ALL)
 //	@JoinColumn(name="orderDetail", referencedColumnName = "orderId")
-	private List<OrderDetails> orders;
+//	private List<OrderDetails> orders;
 }

@@ -31,7 +31,15 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public Item addItem(Item item) {
-		return ir.save(item);
+		Optional<Category> cat= cr.findById(item.getCategory().getCatId());
+		if(cat.isPresent()) {
+			Category category=cat.get();
+			item.setCategory(category);
+			category.getItems().add(item);
+			return ir.save(item);
+		}
+		
+		return null;
 	}
 
 	@Override
