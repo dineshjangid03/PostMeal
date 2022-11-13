@@ -54,10 +54,10 @@ public class Customer {
 	@Embedded
 	private Address address;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "foodCart", referencedColumnName = "cartId")
-	private FoodCart foodCart; 
-	@OneToMany(cascade = CascadeType.ALL)
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "foodCart", referencedColumnName = "cartId")
+//	private FoodCart foodCart; 
+//	@OneToMany(cascade = CascadeType.ALL)
 //	@JoinColumn(name="orderDetail", referencedColumnName = "orderId")
-	private List<OrderDetails> orders;
+//	private List<OrderDetails> orders;
 }
