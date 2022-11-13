@@ -50,6 +50,33 @@ public class ItemServiceImpl implements ItemService{
 		}
 		return ir.save(item);
 	}
+	
+	@Override
+	public Item addItemInRestaurant(Integer itemId, Integer resId) throws ItemException, ResturantNotFoundException {
+		Optional<Restaurant> res=rr.findById(resId);
+		Optional<Item> itm=ir.findById(itemId);
+		
+		if(!res.isPresent()) {
+			throw new ResturantNotFoundException("restaurant not find with this id "+resId);
+		}
+		if(!itm.isPresent()) {
+			throw new ItemException("item not found with this id "+itemId);
+		}
+		
+		Restaurant rest=res.get();
+		Item item=itm.get();
+		
+		rest.getItems().add(item);
+		
+		item.getRestaurants().add(rest);
+//		rest.getItems().add(item);
+		
+		ir.save(item);
+		
+		rr.save(rest);
+		
+		return item;
+	}
 
 	@Override
 	public Item viewItem(Integer itemId) throws ItemException {
@@ -97,6 +124,8 @@ public class ItemServiceImpl implements ItemService{
 		}
 		return list;
 	}
+
+
 
 	
 

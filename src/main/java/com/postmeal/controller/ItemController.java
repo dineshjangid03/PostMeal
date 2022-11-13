@@ -18,6 +18,7 @@ import com.postmeal.Model.Category;
 import com.postmeal.Model.Item;
 import com.postmeal.Model.Restaurant;
 import com.postmeal.exception.ItemException;
+import com.postmeal.exception.ResturantNotFoundException;
 import com.postmeal.service.ItemService;
 
 @RestController
@@ -36,6 +37,12 @@ public class ItemController {
 	@PutMapping("/updateitem")
 	public ResponseEntity<Item> updateItem(@RequestBody Item item) throws ItemException{
 		Item updated=is.updateItem(item);
+		return new ResponseEntity<Item>(updated, HttpStatus.ACCEPTED);
+	}
+	
+	@PutMapping("/addItemInRestaurant/{itemId}/{resId}")
+	public ResponseEntity<Item> addItemInRestaurant(@PathVariable("itemId") Integer itemId,@PathVariable("resId") Integer resId) throws ItemException,ResturantNotFoundException{
+		Item updated=is.addItemInRestaurant(itemId, resId);
 		return new ResponseEntity<Item>(updated, HttpStatus.ACCEPTED);
 	}
 	
