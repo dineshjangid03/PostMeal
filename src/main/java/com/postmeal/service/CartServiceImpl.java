@@ -7,11 +7,13 @@ import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.postmeal.Model.Customer;
 import com.postmeal.Model.FoodCart;
 import com.postmeal.Model.Item;
 import com.postmeal.exception.FoodCartException;
 import com.postmeal.exception.ItemException;
 import com.postmeal.repository.CartRepository;
+import com.postmeal.repository.CustomerRepo;
 import com.postmeal.repository.ItemRepository;
 
 
@@ -25,11 +27,22 @@ public class CartServiceImpl implements CartService{
 	@Autowired
 	private ItemRepository ir;
 	
+	@Autowired
+	private CustomerRepo cur;
+	
 	
 
 	@Override
 	public FoodCart saveFoodCart(FoodCart cart) {
-		return cr.save(cart);
+		
+		Optional<Customer> cust=cur.findById(cart.getCustomer().getCustomerId());
+		
+		if(cust.isPresent()) {
+			cart.setCustomer(cust.get());
+			return cr.save(cart);
+		}
+		return null;
+		
 	}
 	
 
