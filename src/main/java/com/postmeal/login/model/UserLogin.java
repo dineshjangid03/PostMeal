@@ -19,7 +19,7 @@ public class UserLogin {
 	@Column(unique = true)
 	private Integer userId;
 	@Email(message = "email is not in proper format")
-	private String userName;
+	private String userMail;
 	@NotNull
 	private String password;
 

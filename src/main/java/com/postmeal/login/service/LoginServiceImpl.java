@@ -46,7 +46,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String loginUser(UserLogin dto) throws LogInException {
-		Customer customer = cRepo.findByEmail(dto.getUserName());
+		Customer customer = cRepo.findByEmail(dto.getUserMail());
 		if(customer==null) {
 			throw new LogInException("Invalid Email...");
 		}
@@ -55,14 +55,14 @@ public class LoginServiceImpl implements LoginService {
 		if(currUserOpt != null) {
 			throw new LogInException("User Already Logged In...");
 		}
-		if (customer != null && customer.getPassword().equals(dto.getPassword())&& customer.getEmail().equals(dto.getUserName())) {
+		if (customer != null && customer.getPassword().equals(dto.getPassword())&& customer.getEmail().equals(dto.getUserMail())) {
 			UserCurrentSession ucs = new UserCurrentSession();
 			ucs.setUserId(customer.getCustomerId());
 			ucs.setLocalDateTime(LocalDateTime.now());
 			ucs.setCustomerId(customer.getCustomerId());
 			ucs.setUuid(RandomString.make(6));
 			userRepo.save(ucs);
-			UserLogin ulogin = new UserLogin(ucs.getCustomerId(), dto.getUserName(),dto.getPassword());
+			UserLogin ulogin = new UserLogin(ucs.getCustomerId(), dto.getUserMail(),dto.getPassword());
 			ulRepo.save(ulogin);
 			return ucs.toString() +"   ..Logged Successfully  ";
 		} else
